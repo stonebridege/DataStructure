@@ -87,9 +87,9 @@ public class SparseArray {
      */
     public static int[][] arrayToSparseArray(int[][] chessArr, int val) {
         int sum = 0;
-        for (int i = 0; i < chessArr.length; i++) {
-            for (int j = 0; j < chessArr[i].length; j++) {
-                if (chessArr[i][j] != val) {
+        for (int[] ints : chessArr) {
+            for (int anInt : ints) {
+                if (anInt != val) {
                     sum++;
                 }
             }
