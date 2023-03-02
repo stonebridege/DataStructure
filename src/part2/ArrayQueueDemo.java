@@ -7,7 +7,7 @@ public class ArrayQueueDemo {
     public static void main(String[] args) {
         //测试一把
         //创建一个队列
-        ArrayQueue queue = new ArrayQueue(3);
+        ArrayQueue queue = new ArrayQueue(10);
         char key = ' '; //接收用户输入
         Scanner scanner = new Scanner(System.in);//
         boolean loop = true;
@@ -62,24 +62,24 @@ public class ArrayQueueDemo {
 
 // 使用数组模拟队列-编写一个ArrayQueue类
 class ArrayQueue {
-    private int maxSize; // 表示数组的最大容量
-    private int front; // 队列头
-    private int rear; // 队列尾
-    private int[] arr; // 该数据用于存放数据, 模拟队列
+    private int maxSize; //队列最大长度
+    private int front; //队列头的前一个位置，始终位于队列第一个数据前面
+    private int rear; // 队列尾的位置
+    private int[] queueArray; // 该数据用于存放数据, 模拟队列
 
     // 创建队列的构造器
-    public ArrayQueue(int arrMaxSize) {
-        maxSize = arrMaxSize;
-        arr = new int[maxSize];
-        // 指向队列头部，分析出front是指向队列头的前一个位置.
-        front = -1;
-        // 指向队列尾，指向队列尾的数据(即就是队列最后一个数据)
-        rear = -1;
+    public ArrayQueue(int maxSize) {  // 队列构造方法
+        this.maxSize = maxSize;
+        this.queueArray = new int[maxSize];
+        //指向队列头部，分析出front是指向队列头的前一个位置.
+        this.front = -1;
+        //指向队列尾，指向队列尾的数据(即就是队列最后一个数据)
+        this.rear = -1;
     }
 
     //判断队列是否满
     public boolean isFull() {
-        return rear == maxSize - 1;
+        return (maxSize - 1) == rear;
     }
 
     //判断队列是否为空
@@ -88,14 +88,14 @@ class ArrayQueue {
     }
 
     // 添加数据到队列
-    public void addQueue(int n) {
+    public void addQueue(int data) {
         // 判断队列是否满
         if (isFull()) {
             System.out.println("队列满，不能加入数据~");
             return;
         }
-        rear++; // 让rear 后移
-        arr[rear] = n;
+        rear++;// 让rear 后移
+        queueArray[rear] = data;
     }
 
     // 获取队列的数据, 出队列
@@ -105,9 +105,10 @@ class ArrayQueue {
             // 通过抛出异常
             throw new RuntimeException("队列空，不能取数据");
         }
-        front++; // front后移
-        return arr[front];
-
+        front++;// front后移
+        int rtnVal = queueArray[front];
+        queueArray[front] = 0;
+        return rtnVal;
     }
 
     // 显示队列的所有数据
@@ -117,8 +118,8 @@ class ArrayQueue {
             System.out.println("队列空的，没有数据~~");
             return;
         }
-        for (int i = 0; i < arr.length; i++) {
-            System.out.printf("arr[%d]=%d\n", i, arr[i]);
+        for (int i = front + 1; i <= rear; i++) {// 遍历队列中的数据
+            System.out.printf("%d\n", queueArray[i]);
         }
     }
 
@@ -128,6 +129,6 @@ class ArrayQueue {
         if (isEmpty()) {
             throw new RuntimeException("队列空的，没有数据~~");
         }
-        return arr[front + 1];
+        return queueArray[front + 1];
     }
 }
