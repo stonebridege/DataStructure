@@ -3,39 +3,39 @@ package part6;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-//Ñ¡ÔñÅÅĞò
+//é€‰æ‹©æ’åº
 public class SelectSort {
     public static void main(String[] args) {
-        //´´½¨Òª¸ø80000¸öµÄËæ»úµÄÊı×é
+        //åˆ›å»ºè¦ç»™80000ä¸ªçš„éšæœºçš„æ•°ç»„
         int[] arr = new int[80000];
         for (int i = 0; i < 80000; i++) {
-            arr[i] = (int) (Math.random() * 8000000); // Éú³ÉÒ»¸ö[0, 8000000) Êı
+            arr[i] = (int) (Math.random() * 8000000); // ç”Ÿæˆä¸€ä¸ª[0, 8000000) æ•°
         }
 
         Date data1 = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date1Str = simpleDateFormat.format(data1);
-        System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date1Str);
+        System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date1Str);
         selectSort(arr);
         Date data2 = new Date();
         String date2Str = simpleDateFormat.format(data2);
-        System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date2Str);
+        System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date2Str);
     }
 
-    //Ñ¡ÔñÅÅĞò
+    //é€‰æ‹©æ’åº
     public static void selectSort(int[] arr) {
-        //ÔÚÍÆµ¼µÄ¹ı³Ì£¬ÎÒÃÇ·¢ÏÖÁË¹æÂÉ£¬Òò´Ë£¬¿ÉÒÔÊ¹ÓÃforÀ´½â¾ö
-        //Ñ¡ÔñÅÅĞòÊ±¼ä¸´ÔÓ¶ÈÊÇ O(n^2)
+        //åœ¨æ¨å¯¼çš„è¿‡ç¨‹ï¼Œæˆ‘ä»¬å‘ç°äº†è§„å¾‹ï¼Œå› æ­¤ï¼Œå¯ä»¥ä½¿ç”¨foræ¥è§£å†³
+        //é€‰æ‹©æ’åºæ—¶é—´å¤æ‚åº¦æ˜¯ O(n^2)
         for (int i = 0; i < arr.length - 1; i++) {
             int minIndex = i;
             int min = arr[i];
             for (int j = i + 1; j < arr.length; j++) {
-                if (min > arr[j]) { // ËµÃ÷¼Ù¶¨µÄ×îĞ¡Öµ£¬²¢²»ÊÇ×îĞ¡
-                    min = arr[j]; // ÖØÖÃmin
-                    minIndex = j; // ÖØÖÃminIndex
+                if (min > arr[j]) { // è¯´æ˜å‡å®šçš„æœ€å°å€¼ï¼Œå¹¶ä¸æ˜¯æœ€å°
+                    min = arr[j]; // é‡ç½®min
+                    minIndex = j; // é‡ç½®minIndex
                 }
             }
-            // ½«×îĞ¡Öµ£¬·ÅÔÚarr[0], ¼´½»»»
+            // å°†æœ€å°å€¼ï¼Œæ”¾åœ¨arr[0], å³äº¤æ¢
             if (minIndex != i) {
                 arr[minIndex] = arr[i];
                 arr[i] = min;

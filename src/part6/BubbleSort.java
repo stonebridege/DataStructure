@@ -6,34 +6,34 @@ import java.util.Date;
 public class BubbleSort {
 
     public static void main(String[] args) {
-        //²âÊÔÒ»ÏÂÃ°ÅİÅÅĞòµÄËÙ¶ÈO(n^2), ¸ø80000¸öÊı¾İ£¬²âÊÔ
-        //´´½¨Òª¸ø80000¸öµÄËæ»úµÄÊı×é
+        //æµ‹è¯•ä¸€ä¸‹å†’æ³¡æ’åºçš„é€Ÿåº¦O(n^2), ç»™80000ä¸ªæ•°æ®ï¼Œæµ‹è¯•
+        //åˆ›å»ºè¦ç»™80000ä¸ªçš„éšæœºçš„æ•°ç»„
         int[] arr = new int[80000];
         for (int i = 0; i < 80000; i++) {
-            arr[i] = (int) (Math.random() * 8000000); //Éú³ÉÒ»¸ö[0, 8000000) Êı
+            arr[i] = (int) (Math.random() * 8000000); //ç”Ÿæˆä¸€ä¸ª[0, 8000000) æ•°
         }
         Date data1 = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date1Str = simpleDateFormat.format(data1);
-        System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date1Str);
-        //²âÊÔÃ°ÅİÅÅĞò
+        System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date1Str);
+        //æµ‹è¯•å†’æ³¡æ’åº
         bubbleSort(arr);
         Date data2 = new Date();
         String date2Str = simpleDateFormat.format(data2);
-        System.out.println("ÅÅĞòºóµÄÊ±¼äÊÇ=" + date2Str);
+        System.out.println("æ’åºåçš„æ—¶é—´æ˜¯=" + date2Str);
     }
 
     /**
-     * ½«Ã°ÅİÅÅĞòËã·¨£¬·â×°³ÉÒ»¸ö·½·¨¡£Ã°ÅİÅÅĞòµÄÊ±¼ä¸´ÔÓ¶È O(n^2), ×Ô¼ºĞ´³ö¡£
+     * å°†å†’æ³¡æ’åºç®—æ³•ï¼Œå°è£…æˆä¸€ä¸ªæ–¹æ³•ã€‚å†’æ³¡æ’åºçš„æ—¶é—´å¤æ‚åº¦ O(n^2), è‡ªå·±å†™å‡ºã€‚
      */
     public static void bubbleSort(int[] arr) {
-        // ÁÙÊ±±äÁ¿
+        // ä¸´æ—¶å˜é‡
         int temp = 0;
-        // ±êÊ¶±äÁ¿£¬±íÊ¾ÊÇ·ñ½øĞĞ¹ı½»»»
+        // æ ‡è¯†å˜é‡ï¼Œè¡¨ç¤ºæ˜¯å¦è¿›è¡Œè¿‡äº¤æ¢
         boolean flag = false;
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
-                // Èç¹ûÇ°ÃæµÄÊı±ÈºóÃæµÄÊı´ó£¬Ôò½»»»
+                // å¦‚æœå‰é¢çš„æ•°æ¯”åé¢çš„æ•°å¤§ï¼Œåˆ™äº¤æ¢
                 if (arr[j] > arr[j + 1]) {
                     flag = true;
                     temp = arr[j];
@@ -41,12 +41,12 @@ public class BubbleSort {
                     arr[j + 1] = temp;
                 }
             }
-            //System.out.println("µÚ" + (i + 1) + "ÌËÅÅĞòºóµÄÊı×é");
+            //System.out.println("ç¬¬" + (i + 1) + "è¶Ÿæ’åºåçš„æ•°ç»„");
             //System.out.println(Arrays.toString(arr));
-            if (!flag) { // ÔÚÒ»ÌËÅÅĞòÖĞ£¬Ò»´Î½»»»¶¼Ã»ÓĞ·¢Éú¹ı
+            if (!flag) { // åœ¨ä¸€è¶Ÿæ’åºä¸­ï¼Œä¸€æ¬¡äº¤æ¢éƒ½æ²¡æœ‰å‘ç”Ÿè¿‡
                 break;
             } else {
-                flag = false; // ÖØÖÃflag!!!, ½øĞĞÏÂ´ÎÅĞ¶Ï
+                flag = false; // é‡ç½®flag!!!, è¿›è¡Œä¸‹æ¬¡åˆ¤æ–­
             }
         }
     }

@@ -7,43 +7,43 @@ public class InsertSort {
 
     public static void main(String[] args) {
         //int[] arr = {101, 34, 119, 1, -1, 89};
-        // ´´½¨Òª¸ø80000¸öµÄËæ»úµÄÊı×é
+        // åˆ›å»ºè¦ç»™80000ä¸ªçš„éšæœºçš„æ•°ç»„
         int[] arr = new int[80000];
         for (int i = 0; i < 80000; i++) {
-            arr[i] = (int) (Math.random() * 8000000); // Éú³ÉÒ»¸ö[0, 8000000) Êı
+            arr[i] = (int) (Math.random() * 8000000); // ç”Ÿæˆä¸€ä¸ª[0, 8000000) æ•°
         }
-        System.out.println("²åÈëÅÅĞòÇ°");
+        System.out.println("æ’å…¥æ’åºå‰");
         Date data1 = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date1Str = simpleDateFormat.format(data1);
-        System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date1Str);
-        insertSort(arr); //µ÷ÓÃ²åÈëÅÅĞòËã·¨
+        System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date1Str);
+        insertSort(arr); //è°ƒç”¨æ’å…¥æ’åºç®—æ³•
         Date data2 = new Date();
         String date2Str = simpleDateFormat.format(data2);
-        System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date2Str);
+        System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date2Str);
     }
 
-    //²åÈëÅÅĞò
+    //æ’å…¥æ’åº
     public static void insertSort(int[] arr) {
         int insertVal = 0;
         int insertIndex = 0;
-        //Ê¹ÓÃforÑ­»·À´°Ñ´úÂë¼ò»¯
+        //ä½¿ç”¨forå¾ªç¯æ¥æŠŠä»£ç ç®€åŒ–
         for (int i = 1; i < arr.length; i++) {
-            //¶¨Òå´ı²åÈëµÄÊı
+            //å®šä¹‰å¾…æ’å…¥çš„æ•°
             insertVal = arr[i];
-            insertIndex = i - 1; // ¼´arr[1]µÄÇ°ÃæÕâ¸öÊıµÄÏÂ±ê
-            // ¸øinsertVal ÕÒµ½²åÈëµÄÎ»ÖÃ
-            // ËµÃ÷
-            // 1. insertIndex >= 0 ±£Ö¤ÔÚ¸øinsertVal ÕÒ²åÈëÎ»ÖÃ£¬²»Ô½½ç
-            // 2. insertVal < arr[insertIndex] ´ı²åÈëµÄÊı£¬»¹Ã»ÓĞÕÒµ½²åÈëÎ»ÖÃ
-            // 3. ¾ÍĞèÒª½« arr[insertIndex] ºóÒÆ
+            insertIndex = i - 1; // å³arr[1]çš„å‰é¢è¿™ä¸ªæ•°çš„ä¸‹æ ‡
+            // ç»™insertVal æ‰¾åˆ°æ’å…¥çš„ä½ç½®
+            // è¯´æ˜
+            // 1. insertIndex >= 0 ä¿è¯åœ¨ç»™insertVal æ‰¾æ’å…¥ä½ç½®ï¼Œä¸è¶Šç•Œ
+            // 2. insertVal < arr[insertIndex] å¾…æ’å…¥çš„æ•°ï¼Œè¿˜æ²¡æœ‰æ‰¾åˆ°æ’å…¥ä½ç½®
+            // 3. å°±éœ€è¦å°† arr[insertIndex] åç§»
             while (insertIndex >= 0 && insertVal < arr[insertIndex]) {
                 arr[insertIndex + 1] = arr[insertIndex];// arr[insertIndex]
                 insertIndex--;
             }
-            // µ±ÍË³öwhileÑ­»·Ê±£¬ËµÃ÷²åÈëµÄÎ»ÖÃÕÒµ½, insertIndex + 1
-            // ¾ÙÀı£ºÀí½â²»ÁË£¬ÎÒÃÇÒ»»á debug
-            //ÕâÀïÎÒÃÇÅĞ¶ÏÊÇ·ñĞèÒª¸³Öµ
+            // å½“é€€å‡ºwhileå¾ªç¯æ—¶ï¼Œè¯´æ˜æ’å…¥çš„ä½ç½®æ‰¾åˆ°, insertIndex + 1
+            // ä¸¾ä¾‹ï¼šç†è§£ä¸äº†ï¼Œæˆ‘ä»¬ä¸€ä¼š debug
+            //è¿™é‡Œæˆ‘ä»¬åˆ¤æ–­æ˜¯å¦éœ€è¦èµ‹å€¼
             if (insertIndex + 1 != i) {
                 arr[insertIndex + 1] = insertVal;
             }
